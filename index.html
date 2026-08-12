@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<!--
+  ZA POSLIJE (prije launcha):
+  - Prave fotografije za sve placeholder slotove (O nama, tri naslovne kartice projekata, sve
+    galerije) i zamjena privremenog hero / kuhinje kadra pravima kad klijent pošalje fotografije.
+  - Finalni tekst za hero naslov i "O nama" (trenutno privremeni tekst — traži oznaku
+    "PRIVREMENI TEKST" u kodu).
+  - Pravi Facebook URL (trenutno placeholder https://www.facebook.com).
+  - Sadržaj stranice "Politika privatnosti" (link u footeru trenutno vodi na #kontakt).
+  - Spajanje forme na e-mail servis (Formspree / Netlify Forms / Resend i sl.).
+  - SEO: meta description, Open Graph slika, LocalBusiness JSON-LD (naziv, adresa, telefon,
+    radno vrijeme).
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fronta Design — namještaj po mjeri, Slavonski Brod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#pocetna" class="wordmark">Fronta Design</a>
+    <nav class="nav-desktop" aria-label="Glavna navigacija">
+      <a href="#pocetna">Početna</a>
+      <a href="#projekti">Projekti</a>
+      <a href="#o-nama">O nama</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button type="button" class="hamburger" id="menuToggle" aria-label="Otvorite izbornik" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobilna navigacija">
+    <a href="#pocetna">Početna</a>
+    <a href="#projekti">Projekti</a>
+    <a href="#o-nama">O nama</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<section id="pocetna" class="hero">
+  <img src="images/hero.jpg" alt="Kuhinja izrađena po mjeri" class="hero-image">
+  <div class="hero-gradient" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <p class="eyebrow hero-eyebrow">Izrada i montaža namještaja po mjeri</p>
+      <!-- PRIVREMENI TEKST -->
+      <h1 class="hero-title">Namještaj po mjeri, izrađen za vaš prostor — ne obrnuto.</h1>
+      <a href="#projekti" class="hero-link">Pogledajte projekte →</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="intro-inner">
+    <h2 class="intro-heading">Kuhinje, ugradbeni ormari i dnevni prostori — projektirani za jedan konkretan stan.</h2>
+    <div class="intro-copy">
+      <p>Radimo u Slavonskom Brodu i okolici: kuhinje, ugradbeni ormari i garderobe, dnevne sobe, spavaće sobe te dječje i radne sobe. Dolazimo na izmjeru, predlažemo raspored i materijale, izrađujemo i montiramo do zadnjeg detalja. Bez katalogâ i tipskih dimenzija — svaki element nastaje prema vašim zidovima, navikama i svjetlu u prostoru.</p>
+      <a href="#kontakt" class="text-link accent">Zatražite ponudu →</a>
+    </div>
+  </div>
+</section>
+
+<section id="projekti" class="projekti">
+  <div class="section-head">
+    <h2>Projekti</h2>
+    <span class="section-tag">Kliknite za galeriju</span>
+  </div>
+  <div class="projekti-grid">
+
+    <article class="projekt-card">
+      <div class="projekt-media">
+        <div class="projekt-media-inner">
+          <img src="images/kuhinje-cover.jpg" alt="Kuhinja po mjeri" loading="lazy">
+        </div>
+      </div>
+      <button type="button" class="projekt-open" data-project="0">
+        <h3>Kuhinje po mjeri</h3>
+        <span class="projekt-open-label">Galerija →</span>
+      </button>
+      <dl class="meta-row">
+        <div><dt>Lokacija</dt><dd>Slavonski Brod</dd></div>
+        <div><dt>Dimenzije</dt><dd>po izmjeri prostora</dd></div>
+        <div><dt>Izvedba</dt><dd>Fronta design</dd></div>
+      </dl>
+    </article>
+
+    <article class="projekt-card">
+      <div class="projekt-media">
+        <div class="projekt-media-inner">
+          <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — ugradbeni ormar</span></div>
+        </div>
+      </div>
+      <button type="button" class="projekt-open" data-project="1">
+        <h3>Ugradbeni ormari i garderobe</h3>
+        <span class="projekt-open-label">Galerija →</span>
+      </button>
+      <dl class="meta-row">
+        <div><dt>Lokacija</dt><dd>Slavonski Brod</dd></div>
+        <div><dt>Dimenzije</dt><dd>po izmjeri prostora</dd></div>
+        <div><dt>Izvedba</dt><dd>Fronta design</dd></div>
+      </dl>
+    </article>
+
+    <article class="projekt-card">
+      <div class="projekt-media">
+        <div class="projekt-media-inner">
+          <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — dnevni boravak</span></div>
+        </div>
+      </div>
+      <button type="button" class="projekt-open" data-project="2">
+        <h3>Dnevne sobe i dnevni boravak</h3>
+        <span class="projekt-open-label">Galerija →</span>
+      </button>
+      <dl class="meta-row">
+        <div><dt>Lokacija</dt><dd>Slavonski Brod</dd></div>
+        <div><dt>Dimenzije</dt><dd>po izmjeri prostora</dd></div>
+        <div><dt>Izvedba</dt><dd>Fronta design</dd></div>
+      </dl>
+    </article>
+
+    <article class="projekt-card">
+      <div class="projekt-media">
+        <div class="projekt-media-inner">
+          <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — spavaća soba</span></div>
+        </div>
+      </div>
+      <button type="button" class="projekt-open" data-project="3">
+        <h3>Spavaće te dječje i radne sobe</h3>
+        <span class="projekt-open-label">Galerija →</span>
+      </button>
+      <dl class="meta-row">
+        <div><dt>Lokacija</dt><dd>Slavonski Brod</dd></div>
+        <div><dt>Dimenzije</dt><dd>po izmjeri prostora</dd></div>
+        <div><dt>Izvedba</dt><dd>Fronta design</dd></div>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<section id="o-nama" class="o-nama">
+  <div class="o-nama-inner">
+    <div class="o-nama-media">
+      <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — radionica (vertikalna)</span></div>
+    </div>
+    <div class="o-nama-content">
+      <p class="eyebrow">O nama</p>
+      <!-- PRIVREMENI TEKST -->
+      <h2 class="o-nama-heading">Stolarski obrt koji posao vodi od prve skice do zadnjeg vijka.</h2>
+      <!-- PRIVREMENI TEKST -->
+      <p class="o-nama-copy">Fronta design izrađuje namještaj po mjeri za domove u Slavonskom Brodu i okolici. Svaki komad nastaje u našoj radionici, bez posrednika i podizvođača, prilagođen prostoru, navikama i budžetu naručitelja — od kuhinja do ugradbenih ormara i dnevnih prostora.</p>
+      <div class="proces">
+        <div class="proces-korak">
+          <span class="proces-broj">01</span>
+          <span>Izmjera na adresi i razgovor o potrebama</span>
+        </div>
+        <div class="proces-korak">
+          <span class="proces-broj">02</span>
+          <span>Predlog rasporeda, materijala i okova</span>
+        </div>
+        <div class="proces-korak">
+          <span class="proces-broj">03</span>
+          <span>Izrada elemenata po dogovorenim mjerama</span>
+        </div>
+        <div class="proces-korak proces-korak--last">
+          <span class="proces-broj">04</span>
+          <span>Montaža i završna doradba na licu mjesta</span>
+        </div>
+      </div>
+      <div class="o-nama-cta">
+        <a href="#kontakt" class="btn-dark">Zatražite besplatnu izmjeru</a>
+        <a href="tel:0976113362" class="tel-link">ili nazovite 097 6113 362</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" class="kontakt">
+  <div class="kontakt-info">
+    <p class="eyebrow">Kontakt</p>
+    <h2 class="kontakt-heading">Recite nam što planirate</h2>
+    <p class="kontakt-copy">Pošaljite nekoliko rečenica o prostoru — tip namještaja, približne dimenzije i rok. Odgovaramo u roku od dva radna dana i dogovaramo besplatnu izmjeru na adresi.</p>
+    <div class="kontakt-details">
+      <div>
+        <p class="detail-label">Telefon</p>
+        <a href="tel:0976113362" class="detail-phone">097 6113 362</a>
+      </div>
+      <div>
+        <p class="detail-label">Adresa</p>
+        <p class="detail-text">Ulica Tadije Smičiklasa 47, 35000 Slavonski Brod</p>
+      </div>
+      <div>
+        <p class="detail-label">Radno vrijeme</p>
+        <p class="detail-text">Ponedjeljak – petak, dogovor po pozivu. Subota i nedjelja zatvoreno.</p>
+      </div>
+      <!-- PLACEHOLDER: zamijeniti pravim Facebook URL-om -->
+      <a href="https://www.facebook.com" target="_blank" rel="noopener" class="text-link accent">Fronta Design na Facebooku →</a>
+    </div>
+  </div>
+
+  <div class="kontakt-form-wrap">
+    <div class="thank-you" id="thankYou" hidden>
+      <h3>Hvala — upit je zabilježen.</h3>
+      <p>Javljamo se na kontakt koji ste ostavili u roku od dva radna dana.</p>
+      <button type="button" class="reset-link" id="resetForma">Novi upit</button>
+    </div>
+
+    <form class="kontakt-form" id="kontaktForma">
+      <label class="form-field">
+        <span class="form-label">Ime i prezime</span>
+        <input type="text" name="ime" required placeholder="Ana Horvat">
+      </label>
+      <label class="form-field">
+        <span class="form-label">E-mail ili telefon</span>
+        <input type="text" name="kontakt" required placeholder="ana@primjer.hr / 099 000 0000">
+      </label>
+      <label class="form-field">
+        <span class="form-label">Poruka</span>
+        <textarea name="poruka" rows="4" required placeholder="Kuhinja u obliku L, oko 4,2 m, useljenje u proljeće…"></textarea>
+      </label>
+      <label class="form-checkbox">
+        <input type="checkbox" name="gdpr" required>
+        <span>Slažem se s obradom podataka u svrhu odgovora na moj upit. Podaci se ne dijele trećim stranama.</span>
+      </label>
+      <button type="submit" class="btn-dark">Pošaljite upit</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-wordmark">Fronta Design</span>
+      <span class="footer-meta">Fronta design j.d.o.o. · Slavonski Brod · © 2026</span>
+    </div>
+    <div class="footer-links">
+      <!-- PLACEHOLDER: zamijeniti pravim Facebook URL-om -->
+      <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="#kontakt">Politika privatnosti</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="projektModal" hidden>
+  <div class="modal-backdrop-close" data-close-modal></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <div>
+        <p class="modal-count" id="modalCount"></p>
+        <h3 class="modal-title" id="modalTitle"></h3>
+      </div>
+      <button type="button" class="icon-btn" data-close-modal aria-label="Zatvori">✕</button>
+    </div>
+    <div class="modal-body">
+      <dl class="meta-row modal-meta">
+        <div><dt>Lokacija</dt><dd id="modalLokacija"></dd></div>
+        <div><dt>Dimenzije</dt><dd id="modalDimenzije"></dd></div>
+        <div><dt>Izvedba</dt><dd id="modalIzvedba"></dd></div>
+      </dl>
+      <div class="modal-gallery" id="modalGallery"></div>
+      <div class="modal-footer">
+        <a href="#kontakt" class="text-link accent" data-close-modal>Zatražite ponudu →</a>
+        <a href="tel:0976113362" class="tel-link">097 6113 362</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lightbox-head">
+    <span class="lightbox-count" id="lightboxCount"></span>
+    <button type="button" class="icon-btn icon-btn--dark" id="lightboxClose" aria-label="Zatvori">✕</button>
+  </div>
+  <div class="lightbox-stage" id="lightboxStage">
+    <div class="photo-placeholder photo-placeholder--dark" id="lightboxPlaceholder" aria-hidden="true"><span id="lightboxPlaceholderLabel"></span></div>
+  </div>
+  <div class="lightbox-nav">
+    <button type="button" class="btn-outline-light" id="lightboxPrev">← Prethodna</button>
+    <button type="button" class="btn-outline-light" id="lightboxNext">Sljedeća →</button>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
