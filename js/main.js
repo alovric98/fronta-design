@@ -1,9 +1,8 @@
 (function () {
   'use strict';
 
-  // Statični podaci o projektima. Galerije su u ovoj fazi placeholderi (vidi
-  // komentar na vrhu index.html "ZA POSLIJE") — kad klijent pošalje prave
-  // fotografije, ovdje se labeli zamjenjuju putanjama do slika.
+  // Statični podaci o projektima. Svaka galerijska stavka ima src (putanja do
+  // prave fotografije u images/) i label (koristi se kao alt/aria-label).
   var PROJECTS = [
     {
       naslov: 'Kuhinje po mjeri',
@@ -11,42 +10,48 @@
       dimenzije: 'po izmjeri prostora',
       izvedba: 'Fronta design',
       galerija: [
-        'Fotografija — kuhinja, radna ploča i otok',
-        'Fotografija — kuhinja, gornji elementi',
-        'Fotografija — kuhinja, ugrađeni aparati'
+        { src: 'images/kuhinje-01.jpg', label: 'Kuhinja — zelena mat, otok' },
+        { src: 'images/kuhinje-02.jpg', label: 'Kuhinja — zelena mat, radni niz' },
+        { src: 'images/kuhinje-03.jpg', label: 'Kuhinja — bar pult i police' },
+        { src: 'images/kuhinje-04.jpg', label: 'Kuhinja — hrast i bijela mat' },
+        { src: 'images/kuhinje-05.jpg', label: 'Kuhinja — siva mat, L raspored' },
+        { src: 'images/kuhinje-06.jpg', label: 'Kuhinja — bijela mat i hrast' },
+        { src: 'images/kuhinje-07.jpg', label: 'Kuhinja — hrast, linearni niz' },
+        { src: 'images/kuhinje-08.jpg', label: 'Kuhinja — otvoreni prostor s otokom' },
+        { src: 'images/kuhinje-09.jpg', label: 'Kuhinja — pult s ladicama' },
+        { src: 'images/kuhinje-10.jpg', label: 'Kuhinja — bijela mat s hrastom' }
       ]
     },
     {
-      naslov: 'Ugradbeni ormari i garderobe',
+      naslov: 'Ormari po mjeri',
       lokacija: 'Slavonski Brod',
       dimenzije: 'po izmjeri prostora',
       izvedba: 'Fronta design',
       galerija: [
-        'Fotografija — ugradbeni ormar, cijeli pogled',
-        'Fotografija — ugradbeni ormar, detalj okova',
-        'Fotografija — garderoba, unutrašnjost'
+        { src: 'images/ormari-cover.jpg', label: 'Ugradbeni ormar — predsoblje' },
+        { src: 'images/ormari-01.jpg', label: 'Garderoba i unutrašnjost' }
       ]
     },
     {
-      naslov: 'Dnevne sobe i dnevni boravak',
+      naslov: 'Komode i ladičari',
       lokacija: 'Slavonski Brod',
       dimenzije: 'po izmjeri prostora',
       izvedba: 'Fronta design',
       galerija: [
-        'Fotografija — dnevni boravak, TV komoda',
-        'Fotografija — dnevni boravak, police',
-        'Fotografija — dnevni boravak, detalj izrade'
+        { src: 'images/dnevne-cover.jpg', label: 'TV komoda — bijeli lak' },
+        { src: 'images/dnevne-01.jpg', label: 'Komoda s kliznim vratima' },
+        { src: 'images/dnevne-02.jpg', label: 'Ladičar — bočni pogled' },
+        { src: 'images/kupaonica-01.jpg', label: 'Kupaonski element s ladicama' }
       ]
     },
     {
-      naslov: 'Spavaće te dječje i radne sobe',
+      naslov: 'Radne Sobe',
       lokacija: 'Slavonski Brod',
       dimenzije: 'po izmjeri prostora',
       izvedba: 'Fronta design',
       galerija: [
-        'Fotografija — spavaća soba, ormar',
-        'Fotografija — dječja soba, radni stol',
-        'Fotografija — radna soba, police'
+        { src: 'images/radne-01.jpg', label: 'Radni stol u L izvedbi' },
+        { src: 'images/radne-cover.jpg', label: 'Radni stol — tamni dekor' }
       ]
     }
   ];
@@ -100,6 +105,8 @@
 
     var lightboxStage = document.getElementById('lightboxStage');
     var lightboxCount = document.getElementById('lightboxCount');
+    var lightboxImage = document.getElementById('lightboxImage');
+    var lightboxPlaceholder = document.getElementById('lightboxPlaceholder');
     var lightboxPlaceholderLabel = document.getElementById('lightboxPlaceholderLabel');
     var lightboxClose = document.getElementById('lightboxClose');
     var lightboxPrev = document.getElementById('lightboxPrev');
@@ -120,20 +127,28 @@
       modalIzvedba.textContent = projekt.izvedba;
 
       modalGallery.innerHTML = '';
-      projekt.galerija.forEach(function (label, i) {
+      projekt.galerija.forEach(function (item, i) {
         var figure = document.createElement('figure');
         figure.className = 'gallery-item';
 
         var media = document.createElement('div');
         media.className = 'gallery-media';
 
-        var placeholder = document.createElement('div');
-        placeholder.className = 'photo-placeholder';
-        placeholder.setAttribute('aria-hidden', 'true');
-        var span = document.createElement('span');
-        span.textContent = label;
-        placeholder.appendChild(span);
-        media.appendChild(placeholder);
+        if (item.src) {
+          var img = document.createElement('img');
+          img.src = item.src;
+          img.alt = item.label || '';
+          img.loading = 'lazy';
+          media.appendChild(img);
+        } else {
+          var placeholder = document.createElement('div');
+          placeholder.className = 'photo-placeholder';
+          placeholder.setAttribute('aria-hidden', 'true');
+          var span = document.createElement('span');
+          span.textContent = item.label || '';
+          placeholder.appendChild(span);
+          media.appendChild(placeholder);
+        }
 
         var zoomBtn = document.createElement('button');
         zoomBtn.type = 'button';
@@ -175,8 +190,18 @@
     function renderZoom() {
       var projekt = PROJECTS[activeProjectIndex];
       var total = projekt.galerija.length;
+      var item = projekt.galerija[activeZoomIndex];
       lightboxCount.textContent = (activeZoomIndex + 1) + ' / ' + total;
-      lightboxPlaceholderLabel.textContent = projekt.galerija[activeZoomIndex];
+      if (item.src) {
+        lightboxImage.src = item.src;
+        lightboxImage.alt = item.label || '';
+        lightboxImage.hidden = false;
+        lightboxPlaceholder.hidden = true;
+      } else {
+        lightboxImage.hidden = true;
+        lightboxPlaceholder.hidden = false;
+        lightboxPlaceholderLabel.textContent = item.label || '';
+      }
     }
 
     function closeLightbox() {

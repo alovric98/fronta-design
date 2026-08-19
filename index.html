@@ -3,15 +3,17 @@
 <head>
 <!--
   ZA POSLIJE (prije launcha):
-  - Prave fotografije za sve placeholder slotove (O nama, tri naslovne kartice projekata, sve
-    galerije) i zamjena privremenog hero / kuhinje kadra pravima kad klijent pošalje fotografije.
-  - Finalni tekst za hero naslov i "O nama" (trenutno privremeni tekst — traži oznaku
-    "PRIVREMENI TEKST" u kodu).
+  - Finalni tekst za "O nama" (trenutno privremeni tekst — traži oznaku "PRIVREMENI TEKST" u kodu).
+    Hero tekst je finalni (klijentova promo-grafika), više nije placeholder.
   - Pravi Facebook URL (trenutno placeholder https://www.facebook.com).
   - Sadržaj stranice "Politika privatnosti" (link u footeru trenutno vodi na #kontakt).
   - Spajanje forme na e-mail servis (Formspree / Netlify Forms / Resend i sl.).
   - SEO: meta description, Open Graph slika, LocalBusiness JSON-LD (naziv, adresa, telefon,
     radno vrijeme).
+  - "O nama" fotografija (images/ladicar-brand.jpg) je klijentova gotova promo-grafika s ugrađenim
+    tekstom ("Izrada i montaža..." + Fronta design + telefon) — dupli tekst pored stvarnog "O nama"
+    naslova. Ako smeta, zamijeniti čistom fotografijom bez teksta (kandidat: isti komad namještaja,
+    drugi kut, bez grafike).
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,13 +48,12 @@
 </header>
 
 <section id="pocetna" class="hero">
-  <img src="images/hero.jpg" alt="Kuhinja izrađena po mjeri" class="hero-image">
+  <img src="images/hero-ladicar-wide.jpg" alt="Namještaj izrađen po mjeri" class="hero-image">
   <div class="hero-gradient" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-inner">
-      <p class="eyebrow hero-eyebrow">Izrada i montaža namještaja po mjeri</p>
-      <!-- PRIVREMENI TEKST -->
-      <h1 class="hero-title">Namještaj po mjeri, izrađen za vaš prostor — ne obrnuto.</h1>
+      <p class="eyebrow hero-eyebrow">Fronta design · Slavonski Brod</p>
+      <h1 class="hero-title">Izrada i montaža namještaja po mjeri.</h1>
       <a href="#projekti" class="hero-link">Pogledajte projekte →</a>
     </div>
   </div>
@@ -95,11 +96,11 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — ugradbeni ormar</span></div>
+          <img src="images/ormari-cover.jpg" alt="Ormar po mjeri" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="1">
-        <h3>Ugradbeni ormari i garderobe</h3>
+        <h3>Ormari po mjeri</h3>
         <span class="projekt-open-label">Galerija →</span>
       </button>
       <dl class="meta-row">
@@ -112,11 +113,11 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — dnevni boravak</span></div>
+          <img src="images/dnevne-cover.jpg" alt="Komoda po mjeri" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="2">
-        <h3>Dnevne sobe i dnevni boravak</h3>
+        <h3>Komode i ladičari</h3>
         <span class="projekt-open-label">Galerija →</span>
       </button>
       <dl class="meta-row">
@@ -129,11 +130,11 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — spavaća soba</span></div>
+          <img src="images/radne-01.jpg" alt="Radni stol po mjeri" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="3">
-        <h3>Spavaće te dječje i radne sobe</h3>
+        <h3>Radne Sobe</h3>
         <span class="projekt-open-label">Galerija →</span>
       </button>
       <dl class="meta-row">
@@ -149,7 +150,7 @@
 <section id="o-nama" class="o-nama">
   <div class="o-nama-inner">
     <div class="o-nama-media">
-      <div class="photo-placeholder" aria-hidden="true"><span>Fotografija — radionica (vertikalna)</span></div>
+      <img src="images/ladicar-brand.jpg" alt="Fronta design — izrada namještaja po mjeri">
     </div>
     <div class="o-nama-content">
       <p class="eyebrow">O nama</p>
@@ -280,6 +281,7 @@
     <button type="button" class="icon-btn icon-btn--dark" id="lightboxClose" aria-label="Zatvori">✕</button>
   </div>
   <div class="lightbox-stage" id="lightboxStage">
+    <img id="lightboxImage" alt="" hidden>
     <div class="photo-placeholder photo-placeholder--dark" id="lightboxPlaceholder" aria-hidden="true"><span id="lightboxPlaceholderLabel"></span></div>
   </div>
   <div class="lightbox-nav">
