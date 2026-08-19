@@ -3,36 +3,71 @@
    ========================================================================== */
 
 :root {
-  --bg: #EFE9DF;
-  --bg-alt: #E6DFD3;
-  --text: #171410;
-  --accent: #8A6A3C;
+  /* --- podloge --- */
+  --bg:        #2A2A2C;   /* glavna pozadina, topla tamno siva */
+  --bg-alt:    #232325;   /* sekcija "O nama" */
+  --surface:   #343437;   /* modal panel — svjetliji od stranice, radi odvajanja */
+  --deep:      #1B1B1D;   /* fallback iza hero fotografije */
 
-  --hairline-10: rgba(23, 20, 16, 0.1);
-  --hairline-12: rgba(23, 20, 16, 0.12);
-  --hairline-16: rgba(23, 20, 16, 0.16);
-  --hairline-18: rgba(23, 20, 16, 0.18);
-  --hairline-28: rgba(23, 20, 16, 0.28);
+  /* --- tekst --- */
+  --text:      #EDEAE5;   /* topla bijela */
+  --on-accent: #171410;   /* tekst na bakrenoj plohi */
 
-  --text-80: rgba(23, 20, 16, 0.8);
-  --text-72: rgba(23, 20, 16, 0.72);
-  --text-65: rgba(23, 20, 16, 0.65);
-  --text-60: rgba(23, 20, 16, 0.6);
-  --text-45: rgba(23, 20, 16, 0.45);
-  --text-42: rgba(23, 20, 16, 0.42);
-  --text-40: rgba(23, 20, 16, 0.4);
-  --text-38: rgba(23, 20, 16, 0.38);
+  /* --- bakar ---
+     --accent je #D89257, ne #CE8A47 kako je prvotno predloženo: #CE8A47 na
+     --surface (modal-footer link) mjeri 4.34 i pada AA 4.5. #D89257 prolazi
+     svugdje (bg 5.57, surface 4.83) — provjereno WCAG skriptom, ne na oko. */
+  --accent:       #D89257;  /* tekst i linkovi */
+  --accent-solid: #B87333;  /* plohe, CTA, obrubi — kontrast teksta na njima nije relevantan ovdje */
+  --accent-hover: #DFA05F;  /* hover na punoj bakrenoj plohi */
+  --accent-line:  rgba(216, 146, 87, 0.45);  /* podcrta ispod accent linkova, derivirano od --accent */
 
-  --dark: #171410;
-  --backdrop: rgba(12, 10, 8, 0.72);
-  --zoom-bg: rgba(8, 7, 6, 0.94);
+  /* --- hairline (bazirano na svijetlom tekstu, ne na tamnom) --- */
+  --hairline-10: rgba(237, 234, 229, 0.10);
+  --hairline-12: rgba(237, 234, 229, 0.12);
+  --hairline-16: rgba(237, 234, 229, 0.16);
+  --hairline-18: rgba(237, 234, 229, 0.18);
+  --hairline-28: rgba(237, 234, 229, 0.28);
 
-  --white: #fff;
+  /* --- prozirnosti teksta --- */
+  --text-80: rgba(237, 234, 229, 0.80);
+  --text-72: rgba(237, 234, 229, 0.72);
+  --text-65: rgba(237, 234, 229, 0.65);
+  --text-60: rgba(237, 234, 229, 0.60);
+  /*
+   * --text-45/-42/-40/-38: brojevi u imenima su postotci alphe u SVIJETLOJ
+   * shemi i namjerno se više ne poklapaju s trenutnom vrijednošću — imena
+   * su zadržana da se ne mijenja nijedna referenca drugdje u fajlu. Stvarne
+   * alphe su podignute iznad WCAG AA poda (4.5:1 na najgoroj pozadini,
+   * --surface), svaka do drugog praga da se sačuva postojeća 4-stupanjska
+   * editorial hijerarhija (eyebrow > dt-labeli > figcaption > proces-broj):
+   *   --text-45 0.67 (5.61 na surface) > --text-42 0.63 (5.15)
+   *   > --text-40 0.60 (4.83) > --text-38 0.57 (4.52, pod praga je ispod 4.5)
+   */
+  --text-45: rgba(237, 234, 229, 0.67);
+  --text-42: rgba(237, 234, 229, 0.63);
+  --text-40: rgba(237, 234, 229, 0.60);
+  --text-38: rgba(237, 234, 229, 0.57);
+  --text-placeholder: rgba(237, 234, 229, 0.57);  /* ::placeholder — 0.35 je padao na 2.78, ne 4.5 */
+
+  /* --- pomoćne plohe --- */
+  --media-bg:            rgba(237, 234, 229, 0.06);  /* prazna ploha ispod slike */
+  --surface-blur:        rgba(42, 42, 44, 0.92);     /* sticky header */
+  --surface-blur-strong: rgba(52, 52, 55, 0.95);     /* modal header */
+  --chip-bg:             rgba(237, 234, 229, 0.94);  /* "POVEĆAJ" oznaka */
+  --gallery-zoom-hover:  rgba(10, 10, 11, 0.35);     /* zatamnjenje preko galerije na hover */
+
+  --backdrop: rgba(10, 10, 11, 0.78);   /* jači nego prije, da se modal odvoji */
+  --zoom-bg:  rgba(8, 7, 6, 0.94);      /* bez promjene */
+
+  /* --- bijele nijanse (hero i lightbox, ostaju) --- */
+  --white:    #fff;
   --white-82: rgba(255, 255, 255, 0.82);
-  --white-60: rgba(255, 255, 255, 0.6);
-  --white-40: rgba(255, 255, 255, 0.4);
-  --white-30: rgba(255, 255, 255, 0.3);
+  --white-60: rgba(255, 255, 255, 0.60);
+  --white-40: rgba(255, 255, 255, 0.40);
+  --white-30: rgba(255, 255, 255, 0.30);
 
+  /* --- tipografija i mjere: bez promjene --- */
   --font-serif: "Newsreader", serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 
@@ -55,7 +90,7 @@ a { color: var(--text); text-decoration: none; }
 a:hover { color: var(--accent); }
 input, textarea, button { font: inherit; color: inherit; }
 button { cursor: pointer; background: none; border: 0; }
-::placeholder { color: rgba(23, 20, 16, 0.35); }
+::placeholder { color: var(--text-placeholder); }
 img { max-width: 100%; display: block; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -73,15 +108,17 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  border-bottom: 1px solid rgba(138, 106, 60, 0.45);
+  border-bottom: 1px solid var(--accent-line);
   padding-bottom: 4px;
 }
 .text-link.accent:hover { border-bottom-color: var(--accent); }
 
+/* Ime .btn-dark je zadržano iako je gumb sada bakrena ploha, ne tamna —
+   preimenovanje bi zahtijevalo izmjenu index.html, izvan opsega ove izmjene. */
 .btn-dark {
-  background: var(--dark);
-  color: var(--bg);
-  border: 1px solid var(--dark);
+  background: var(--accent-solid);
+  color: var(--on-accent);
+  border: 1px solid var(--accent-solid);
   padding: 16px 30px;
   min-height: 52px;
   display: inline-flex;
@@ -92,7 +129,7 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   transition: background 260ms ease, border-color 260ms ease, color 260ms ease;
 }
-.btn-dark:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-dark:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
 
 .meta-row, .modal-meta {
   display: grid;
@@ -119,7 +156,7 @@ img { max-width: 100%; display: block; }
   color: var(--text);
   transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
 }
-.icon-btn:hover { background: var(--dark); border-color: var(--dark); color: var(--bg); }
+.icon-btn:hover { background: var(--accent-solid); border-color: var(--accent-solid); color: var(--on-accent); }
 .icon-btn--dark { border-color: var(--white-30); color: #fff; }
 .icon-btn--dark:hover { background: rgba(255, 255, 255, 0.14); border-color: var(--white-30); color: #fff; }
 
@@ -152,7 +189,7 @@ img { max-width: 100%; display: block; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(239, 233, 223, 0.92);
+  background: var(--surface-blur);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--hairline-12);
 }
@@ -220,7 +257,7 @@ img { max-width: 100%; display: block; }
   height: 76vh;
   min-height: 460px;
   overflow: hidden;
-  background: var(--dark);
+  background: var(--deep);
 }
 .hero-image {
   position: absolute;
@@ -233,7 +270,7 @@ img { max-width: 100%; display: block; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(12, 10, 8, 0.82) 0%, rgba(12, 10, 8, 0.5) 32%, rgba(12, 10, 8, 0.08) 66%, rgba(12, 10, 8, 0) 100%);
+  background: linear-gradient(to top, rgba(12, 10, 8, 0.72) 0%, rgba(12, 10, 8, 0.42) 32%, rgba(12, 10, 8, 0.06) 66%, rgba(12, 10, 8, 0) 100%);
 }
 .hero-content {
   position: absolute;
@@ -315,7 +352,7 @@ img { max-width: 100%; display: block; }
   gap: clamp(36px, 5vw, 72px) clamp(24px, 3vw, 48px);
 }
 
-.projekt-media { position: relative; width: 100%; aspect-ratio: 5 / 4; overflow: hidden; background: rgba(23, 20, 16, 0.06); }
+.projekt-media { position: relative; width: 100%; aspect-ratio: 5 / 4; overflow: hidden; background: var(--media-bg); }
 .projekt-media-inner { position: absolute; inset: 0; transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1); }
 .projekt-media:hover .projekt-media-inner { transform: scale(1.035); }
 .projekt-media-inner img { width: 100%; height: 100%; object-fit: cover; }
@@ -350,7 +387,7 @@ img { max-width: 100%; display: block; }
   align-items: flex-start;
   position: relative;
 }
-.o-nama-media { flex: 1 1 300px; min-width: 0; max-width: 520px; width: 100%; aspect-ratio: 4 / 5; position: relative; background: rgba(23, 20, 16, 0.06); }
+.o-nama-media { flex: 1 1 300px; min-width: 0; max-width: 520px; width: 100%; aspect-ratio: 4 / 5; position: relative; background: var(--media-bg); }
 .o-nama-media .photo-placeholder { position: absolute; inset: 0; }
 .o-nama-content { flex: 1 1 340px; min-width: 0; }
 .o-nama-heading { font-family: var(--font-serif); font-weight: 300; font-size: clamp(30px, 4.2vw, 58px); line-height: 1.08; letter-spacing: -0.035em; }
@@ -418,7 +455,7 @@ img { max-width: 100%; display: block; }
 
 .thank-you { padding: clamp(28px, 4vw, 44px) 0; border-top: 1px solid var(--hairline-18); }
 .thank-you h3 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.025em; }
-.thank-you p { margin-top: 14px; font-size: 15px; line-height: 1.7; color: rgba(23, 20, 16, 0.7); }
+.thank-you p { margin-top: 14px; font-size: 15px; line-height: 1.7; color: var(--text-72); }
 .reset-link {
   display: inline-flex;
   align-items: center;
@@ -428,7 +465,7 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  border-bottom: 1px solid rgba(138, 106, 60, 0.4);
+  border-bottom: 1px solid var(--accent-line);
 }
 
 /* ==========================================================================
@@ -470,12 +507,12 @@ img { max-width: 100%; display: block; }
 }
 .modal-backdrop[hidden] { display: none; }
 .modal-backdrop-close { position: fixed; inset: 0; }
-.modal-panel { position: relative; width: 100%; max-width: 1080px; margin: clamp(12px, 3vh, 48px) clamp(0px, 2vw, 24px); background: var(--bg); }
+.modal-panel { position: relative; width: 100%; max-width: 1080px; margin: clamp(12px, 3vh, 48px) clamp(0px, 2vw, 24px); background: var(--surface); }
 .modal-header {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: rgba(239, 233, 223, 0.95);
+  background: var(--surface-blur-strong);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--hairline-16);
   padding: clamp(16px, 2.4vw, 26px) clamp(18px, 3vw, 40px);
@@ -489,7 +526,7 @@ img { max-width: 100%; display: block; }
 .modal-body { padding: clamp(18px, 3vw, 40px); }
 
 .modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(12px, 2vw, 20px); }
-.gallery-media { position: relative; width: 100%; aspect-ratio: 4 / 3; background: rgba(23, 20, 16, 0.06); }
+.gallery-media { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--media-bg); }
 .gallery-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .gallery-zoom {
   position: absolute;
@@ -502,8 +539,8 @@ img { max-width: 100%; display: block; }
   opacity: 0;
   transition: opacity 220ms ease, background 220ms ease;
 }
-.gallery-media:hover .gallery-zoom, .gallery-zoom:focus-visible { opacity: 1; background: rgba(12, 10, 8, 0.18); }
-.gallery-zoom span { background: rgba(239, 233, 223, 0.94); color: var(--text); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 12px; }
+.gallery-media:hover .gallery-zoom, .gallery-zoom:focus-visible { opacity: 1; background: var(--gallery-zoom-hover); }
+.gallery-zoom span { background: var(--chip-bg); color: var(--on-accent); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 12px; }
 .gallery-item figcaption { margin-top: 8px; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-40); }
 
 .modal-footer {
