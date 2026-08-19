@@ -10,16 +10,21 @@
       dimenzije: 'po izmjeri prostora',
       izvedba: 'Fronta design',
       galerija: [
-        { src: 'images/kuhinje-01.jpg', label: 'Kuhinja — zelena mat, otok' },
-        { src: 'images/kuhinje-02.jpg', label: 'Kuhinja — zelena mat, radni niz' },
-        { src: 'images/kuhinje-03.jpg', label: 'Kuhinja — bar pult i police' },
-        { src: 'images/kuhinje-04.jpg', label: 'Kuhinja — hrast i bijela mat' },
-        { src: 'images/kuhinje-05.jpg', label: 'Kuhinja — siva mat, L raspored' },
-        { src: 'images/kuhinje-06.jpg', label: 'Kuhinja — bijela mat i hrast' },
-        { src: 'images/kuhinje-07.jpg', label: 'Kuhinja — hrast, linearni niz' },
-        { src: 'images/kuhinje-08.jpg', label: 'Kuhinja — otvoreni prostor s otokom' },
-        { src: 'images/kuhinje-09.jpg', label: 'Kuhinja — pult s ladicama' },
-        { src: 'images/kuhinje-10.jpg', label: 'Kuhinja — bijela mat s hrastom' }
+        { src: 'images/kuhinje-01.jpg', label: 'Kuhinja — bijela mat, ugrađeni hladnjak' },
+        { src: 'images/kuhinje-02.jpg', label: 'Kuhinja — bijela mat, radna ploča' },
+        { src: 'images/kuhinje-03.jpg', label: 'Kuhinja — bijela i hrast, kosa napa' },
+        { src: 'images/kuhinje-04.jpg', label: 'Kuhinja — siva mat, L raspored' },
+        { src: 'images/kuhinje-05.jpg', label: 'Kuhinja — hrast, ugrađena pećnica' },
+        { src: 'images/kuhinje-06.jpg', label: 'Kuhinja — bijela mat, detalj ugradnje' },
+        { src: 'images/kuhinje-07.jpg', label: 'Kuhinja — hrast, barski pult' },
+        { src: 'images/kuhinje-08.jpg', label: 'Kuhinja — hrast, otvorena polica' },
+        { src: 'images/kuhinje-09.jpg', label: 'Kuhinja — bijela mat, otvoreni prostor s otokom' },
+        { src: 'images/kuhinje-10.jpg', label: 'Kuhinja — zelena mat, visoka kolona' },
+        { src: 'images/kuhinje-11.jpg', label: 'Kuhinja — zelena mat, cijeli pogled' },
+        { src: 'images/kuhinje-12.jpg', label: 'Kuhinja — zelena mat, L raspored' },
+        { src: 'images/kuhinje-13.jpg', label: 'Kuhinja — zelena mat, kutna kolona' },
+        { src: 'images/kuhinje-14.jpg', label: 'Kuhinja — bijela mat, crni naglasak' },
+        { src: 'images/kuhinje-15.jpg', label: 'Kuhinja — zelena mat, blagovaonski stol' }
       ]
     },
     {
@@ -28,8 +33,7 @@
       dimenzije: 'po izmjeri prostora',
       izvedba: 'Fronta design',
       galerija: [
-        { src: 'images/ormari-cover.jpg', label: 'Ugradbeni ormar — predsoblje' },
-        { src: 'images/ormari-01.jpg', label: 'Garderoba i unutrašnjost' }
+        { src: 'images/ormari-cover.jpg', label: 'Ugradbeni ormar — predsoblje' }
       ]
     },
     {
