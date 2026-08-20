@@ -24,7 +24,11 @@
         { src: 'images/kuhinje-12.jpg', label: 'Kuhinja — hrast, barski pult' },
         { src: 'images/kuhinje-13.jpg', label: 'Kuhinja — bijela mat, otvoreni prostor s otokom' },
         { src: 'images/kuhinje-14.jpg', label: 'Kuhinja — zelena mat, kutna kolona' },
-        { src: 'images/kuhinje-15.jpg', label: 'Kuhinja — zelena mat, blagovaonski stol' }
+        { src: 'images/kuhinje-15.jpg', label: 'Kuhinja — zelena mat, blagovaonski stol' },
+        { src: 'images/kuhinje-16.jpg', label: 'Kuhinja — bijela mat, viseća rasvjeta' },
+        { src: 'images/kuhinje-17.jpg', label: 'Kuhinja — bijela mat, detalj radne plohe' },
+        { src: 'images/kuhinje-18.jpg', label: 'Kuhinja — bijela mat, pogled od stola' },
+        { src: 'images/kuhinje-19.jpg', label: 'Kuhinja — bijela mat, detalj visoke kolone' }
       ]
     },
     {
