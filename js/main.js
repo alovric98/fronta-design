@@ -11,6 +11,7 @@
       izvedba: 'Fronta design',
       galerija: [
         { src: 'images/kuhinje-01.jpg', label: 'Kuhinja — bijela mat, ugrađeni hladnjak' },
+        { src: 'images/kuhinje-20.jpg', label: 'Kuhinja — bijela mat, kutni pogled' },
         { src: 'images/kuhinje-02.jpg', label: 'Kuhinja — zelena mat, visoka kolona' },
         { src: 'images/kuhinje-03.jpg', label: 'Kuhinja — zelena mat, L raspored' },
         { src: 'images/kuhinje-04.jpg', label: 'Kuhinja — siva mat, L raspored' },
