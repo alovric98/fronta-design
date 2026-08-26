@@ -5,11 +5,12 @@
   ZA POSLIJE (prije launcha):
   - Finalni tekst za "O nama" (trenutno privremeni tekst — traži oznaku "PRIVREMENI TEKST" u kodu).
     Hero tekst je finalni (klijentova promo-grafika), više nije placeholder.
-  - Pravi Facebook URL (trenutno placeholder https://www.facebook.com).
   - Sadržaj stranice "Politika privatnosti" (link u footeru trenutno vodi na #kontakt).
-  - Spajanje forme na e-mail servis (Formspree / Netlify Forms / Resend i sl.).
-  - SEO: meta description, Open Graph slika, LocalBusiness JSON-LD (naziv, adresa, telefon,
-    radno vrijeme).
+  - Spajanje forme na e-mail servis (Formspree / Netlify Forms / Resend i sl.) — forma trenutno
+    samo prikaže poruku zahvale, upit se nikamo ne šalje.
+  - og:image je zasad hero fotografija (2400x1090). Kad stigne namjenska OG slika, izrezati je
+    1200x630 (omjer koji Facebook/WhatsApp očekuju) i zamijeniti putanju.
+  - JSON-LD: dodati aggregateRating tek kad se zna točan broj recenzija s Google Business Profila.
   - "O nama" fotografija (images/ladicar-brand.jpg) je klijentova gotova promo-grafika s ugrađenim
     tekstom ("Izrada i montaža..." + Fronta design + telefon) — dupli tekst pored stvarnog "O nama"
     naslova. Ako smeta, zamijeniti čistom fotografijom bez teksta (kandidat: isti komad namještaja,
@@ -17,12 +18,51 @@
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
+<meta name="robots" content="index, follow">
 <title>Fronta Design — namještaj po mjeri, Slavonski Brod</title>
+<meta name="description" content="Izrada i montaža namještaja po mjeri u Slavonskom Brodu i okolici — kuhinje, ugradbeni ormari, komode i radne sobe. Besplatna izmjera na adresi, izrada i montaža bez podizvođača.">
+<link rel="canonical" href="https://frontadesign.hr/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fronta Design — namještaj po mjeri, Slavonski Brod">
+<meta property="og:description" content="Izrada i montaža namještaja po mjeri u Slavonskom Brodu i okolici — kuhinje, ugradbeni ormari, komode i radne sobe.">
+<meta property="og:image" content="https://frontadesign.hr/images/hero-ladicar-wide.jpg">
+<meta property="og:url" content="https://frontadesign.hr/">
+<meta property="og:locale" content="hr_HR">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Fronta Design",
+  "legalName": "Fronta design j.d.o.o.",
+  "image": "https://frontadesign.hr/images/hero-ladicar-wide.jpg",
+  "url": "https://frontadesign.hr/",
+  "telephone": "+385976113362",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Ulica Tadije Smičiklasa 47",
+    "addressLocality": "Slavonski Brod",
+    "postalCode": "35000",
+    "addressCountry": "HR"
+  },
+  "areaServed": "Slavonski Brod i okolica",
+  "priceRange": "$$",
+  "sameAs": ["https://www.facebook.com/FrontaDesignSB/"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kuhinje po mjeri" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ugradbeni ormari po mjeri" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Komode i ladičari po mjeri" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Namještaj za radne sobe po mjeri" } }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -50,7 +90,7 @@
 <section id="pocetna" class="hero">
   <picture>
     <source media="(max-width: 879px)" srcset="images/hero-ladicar-mobile.jpg">
-    <img src="images/hero-ladicar-wide.jpg" alt="Namještaj izrađen po mjeri" class="hero-image">
+    <img src="images/hero-ladicar-wide.jpg" alt="Namještaj po mjeri izrađen za dom u Slavonskom Brodu" class="hero-image">
   </picture>
   <div class="hero-gradient" aria-hidden="true"></div>
   <div class="hero-content">
@@ -82,7 +122,7 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <img src="images/kuhinje-cover.jpg" alt="Kuhinja po mjeri" loading="lazy">
+          <img src="images/kuhinje-cover.jpg" alt="Kuhinja po mjeri, izrada i montaža — Slavonski Brod" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="0">
@@ -99,7 +139,7 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <img src="images/ormari-cover.jpg" alt="Ormar po mjeri" loading="lazy">
+          <img src="images/ormari-cover.jpg" alt="Ugradbeni ormar po mjeri — Slavonski Brod" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="1">
@@ -116,7 +156,7 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <img src="images/dnevne-cover.jpg" alt="Komoda po mjeri" loading="lazy">
+          <img src="images/dnevne-cover.jpg" alt="Komoda i ladičar izrađeni po mjeri — Slavonski Brod" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="2">
@@ -133,7 +173,7 @@
     <article class="projekt-card">
       <div class="projekt-media">
         <div class="projekt-media-inner">
-          <img src="images/radne-01.jpg" alt="Radni stol po mjeri" loading="lazy">
+          <img src="images/radne-01.jpg" alt="Namještaj za radnu sobu po mjeri — Slavonski Brod" loading="lazy">
         </div>
       </div>
       <button type="button" class="projekt-open" data-project="3">
@@ -205,8 +245,7 @@
         <p class="detail-label">Radno vrijeme</p>
         <p class="detail-text">Ponedjeljak – petak, dogovor po pozivu. Subota i nedjelja zatvoreno.</p>
       </div>
-      <!-- PLACEHOLDER: zamijeniti pravim Facebook URL-om -->
-      <a href="https://www.facebook.com" target="_blank" rel="noopener" class="text-link accent">Fronta Design na Facebooku →</a>
+      <a href="https://www.facebook.com/FrontaDesignSB/" target="_blank" rel="noopener" class="text-link accent">Fronta Design na Facebooku →</a>
     </div>
   </div>
 
@@ -246,8 +285,7 @@
       <span class="footer-meta">Fronta design j.d.o.o. · Slavonski Brod · © 2026</span>
     </div>
     <div class="footer-links">
-      <!-- PLACEHOLDER: zamijeniti pravim Facebook URL-om -->
-      <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.facebook.com/FrontaDesignSB/" target="_blank" rel="noopener">Facebook</a>
       <a href="#kontakt">Politika privatnosti</a>
     </div>
   </div>
