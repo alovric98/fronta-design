@@ -257,6 +257,11 @@
     </div>
 
     <form class="kontakt-form" id="kontaktForma">
+      <input type="hidden" name="access_key" value="b337aecd-d64a-44ad-80eb-81e3f65fd87c">
+      <input type="hidden" name="subject" value="Novi upit s frontadesign.hr">
+      <!-- Honeypot: pravi korisnik ovo nikad ne vidi ni ne fokusira; ako stigne popunjeno,
+           Web3Forms odbacuje poruku kao spam. -->
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
       <label class="form-field">
         <span class="form-label">Ime i prezime</span>
         <input type="text" name="ime" required placeholder="Ana Horvat">
@@ -269,12 +274,26 @@
         <span class="form-label">Poruka</span>
         <textarea name="poruka" rows="4" required placeholder="Kuhinja u obliku L, oko 4,2 m, useljenje u proljeće…"></textarea>
       </label>
-      <label class="form-checkbox">
-        <input type="checkbox" name="gdpr" required>
-        <span>Slažem se s obradom podataka u svrhu odgovora na moj upit. Podaci se ne dijele trećim stranama.</span>
-      </label>
+      <div class="form-checkbox">
+        <input type="checkbox" name="gdpr" id="gdprPristanak" required>
+        <span><label for="gdprPristanak">Slažem se s obradom podataka u svrhu odgovora na moj upit. Podaci se ne dijele trećim stranama.</label> <a href="#politika-privatnosti" class="form-checkbox-link">Politika privatnosti</a></span>
+      </div>
+      <p class="form-error" id="formaGreska" role="alert" hidden></p>
       <button type="submit" class="btn-dark">Pošaljite upit</button>
     </form>
+  </div>
+</section>
+
+<section id="politika-privatnosti" class="privatnost">
+  <div class="privatnost-inner">
+    <p class="eyebrow">Pravno</p>
+    <h2 class="privatnost-heading">Politika privatnosti</h2>
+    <div class="privatnost-copy">
+      <p>Osobne podatke koje unesete u kontaktnu formu na ovoj stranici — ime i prezime, e-mail ili telefon te sadržaj poruke — prikupljamo isključivo radi odgovora na vaš upit.</p>
+      <p>Poruka se dostavlja na e-mail adresu tvrtke Fronta design j.d.o.o. Za tehničku dostavu koristimo servis Web3Forms, koji poruku samo prosljeđuje i ne koristi je u vlastite svrhe. Osim toga, podatke ne dijelimo s trećim stranama i ne koristimo ih za marketing ni newsletter.</p>
+      <p>Podatke čuvamo onoliko dugo koliko je potrebno za rješavanje vašeg upita. Za uvid, ispravak ili brisanje svojih podataka javite se na 097 6113 362 ili na adresu Ulica Tadije Smičiklasa 47, 35000 Slavonski Brod.</p>
+      <p>Stranica ne postavlja kolačiće i ne koristi alate za analitiku ni praćenje posjetitelja.</p>
+    </div>
   </div>
 </section>
 
@@ -286,7 +305,7 @@
     </div>
     <div class="footer-links">
       <a href="https://www.facebook.com/FrontaDesignSB/" target="_blank" rel="noopener">Facebook</a>
-      <a href="#kontakt">Politika privatnosti</a>
+      <a href="#politika-privatnosti">Politika privatnosti</a>
     </div>
   </div>
 </footer>

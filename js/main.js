@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+  var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+  var PORUKA_GRESKE = 'Slanje nije uspjelo. Pokušajte ponovno ili nas nazovite izravno na 097 6113 362.';
+
   // Statični podaci o projektima. Svaka galerijska stavka ima src (putanja do
   // prave fotografije u images/) i label (koristi se kao alt/aria-label).
   var PROJECTS = [
@@ -273,15 +276,72 @@
     var resetBtn = document.getElementById('resetForma');
     if (!form || !thankYou) return;
 
+    var greska = document.getElementById('formaGreska');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn ? submitBtn.textContent : '';
+    var slanjeUTijeku = false;
+
+    function prikaziGresku(poruka) {
+      if (!greska) return;
+      greska.textContent = poruka;
+      greska.hidden = false;
+    }
+
+    function sakrijGresku() {
+      if (!greska) return;
+      greska.hidden = true;
+      greska.textContent = '';
+    }
+
+    // Zaključava formu dok traje mrežni poziv — spriječava dupli submit
+    // (dvoklik na gumb ili Enter dok prvi zahtjev još visi).
+    function zakljucaj(zakljucano) {
+      slanjeUTijeku = zakljucano;
+      if (!submitBtn) return;
+      submitBtn.disabled = zakljucano;
+      submitBtn.textContent = zakljucano ? 'Šaljemo…' : submitLabel;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      form.hidden = true;
-      thankYou.hidden = false;
+      if (slanjeUTijeku) return;
+      sakrijGresku();
+      zakljucaj(true);
+
+      var podaci = Object.fromEntries(new FormData(form).entries());
+
+      fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(podaci)
+      })
+        .then(function (res) {
+          // res.json() puca ako server vrati HTML umjesto JSON-a (npr. proxy greška);
+          // taj reject hvata .catch ispod, isto kao i mrežni pad.
+          return res.json().then(function (json) {
+            return { ok: res.ok, json: json };
+          });
+        })
+        .then(function (odgovor) {
+          if (!odgovor.ok || odgovor.json.success !== true) {
+            throw new Error('Web3Forms je odbio zahtjev.');
+          }
+          form.reset();
+          form.hidden = true;
+          thankYou.hidden = false;
+        })
+        .catch(function () {
+          prikaziGresku(PORUKA_GRESKE);
+        })
+        .then(function () {
+          zakljucaj(false);
+        });
     });
 
     if (resetBtn) {
       resetBtn.addEventListener('click', function () {
         form.reset();
+        sakrijGresku();
         thankYou.hidden = true;
         form.hidden = false;
       });
