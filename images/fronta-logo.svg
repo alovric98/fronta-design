@@ -1,0 +1,12 @@
+<svg width="300" height="72" viewBox="0 0 300 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="72" fill="none"/>
+  <g transform="translate(8 8)">
+    <rect x="0" y="0" width="52" height="52" rx="14" fill="#1B1715"/>
+    <path d="M15 16.5H31.5C37.9 16.5 42.5 21.1 42.5 27.5C42.5 33.9 37.9 38.5 31.5 38.5H20.6V42.8H15V16.5ZM20.6 21.5V33.5H30.7C34.7 33.5 37.6 30.9 37.6 27.5C37.6 24.1 34.7 21.5 30.7 21.5H20.6Z" fill="#D8B57A"/>
+    <path d="M27 15.2V10.2H33.5V15.2H27Z" fill="#D8B57A"/>
+  </g>
+  <g transform="translate(76 0)">
+    <text x="0" y="45" font-size="27" font-family="Georgia, 'Times New Roman', serif" font-weight="600" fill="#F3EDE5" letter-spacing="-1.5">Fronta</text>
+    <text x="0" y="66" font-size="16" font-family="Arial, sans-serif" font-weight="600" fill="#D8B57A" letter-spacing="2.5">DESIGN</text>
+  </g>
+</svg>
