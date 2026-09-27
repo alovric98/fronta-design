@@ -14,6 +14,7 @@
   --accent-solid: #B87333;
   --accent-hover: #C99460;
   --accent-rgb: 197, 134, 86;
+  --logo: #C9975C; /* same as the fill in images/fronta-logo.svg */
 
   --error: #E8917F;
   --error-rgb: 232, 145, 127;
@@ -188,16 +189,28 @@ img { max-width: 100%; display: block; }
 }
 .wordmark {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
   height: 100%;
 }
 
 .wordmark img {
   display: block;
-  height: clamp(22px, 2.6vw, 34px);
+  height: clamp(28px, 3.2vw, 40px);
   width: auto;
   max-width: 180px;
   object-fit: contain;
+}
+
+.wordmark-text {
+  font-size: clamp(9px, 0.9vw, 11px);
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--logo);
 }
 
 .nav-desktop { display: none; gap: clamp(20px, 3vw, 40px); align-items: center; }
