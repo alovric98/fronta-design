@@ -407,6 +407,9 @@ img { max-width: 100%; display: block; }
 
 .o-nama-cta { margin-top: clamp(26px, 3.5vw, 40px); display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
 .tel-link { font-size: 14px; color: var(--text-60); }
+.o-nama-cjenik { margin-top: 18px; font-size: 13px; letter-spacing: 0.04em; }
+.o-nama-cjenik a { color: var(--accent); border-bottom: 1px solid rgba(var(--accent-rgb), 0.5); padding-bottom: 2px; }
+.o-nama-cjenik a:hover { border-bottom-color: var(--accent); }
 
 /* ==========================================================================
    Kontakt
@@ -550,6 +553,69 @@ img { max-width: 100%; display: block; }
 .footer-meta { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-42); }
 .footer-links { display: flex; gap: clamp(18px, 2.5vw, 32px); }
 .footer-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-60); }
+
+/* ==========================================================================
+   Cjenik (cjenik.html)
+   ========================================================================== */
+
+.cjenik-back { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+.cjenik-inner { max-width: 1040px; margin: 0 auto; padding: clamp(48px, 7vw, 96px) var(--pad-x); }
+.cjenik-heading { font-family: var(--font-serif); font-weight: 300; font-size: clamp(34px, 5vw, 64px); line-height: 1.06; letter-spacing: -0.035em; }
+.cjenik-intro { margin-top: clamp(18px, 2.5vw, 26px); max-width: 60ch; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.75; color: var(--text-72); text-wrap: pretty; }
+
+.cjenik-grupa { margin-top: clamp(40px, 6vw, 72px); }
+.cjenik-grupa-naslov { margin-bottom: clamp(12px, 1.8vw, 18px); font-family: var(--font-serif); font-weight: 400; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.025em; }
+
+.cjenik-tablica { width: 100%; border-collapse: collapse; }
+.cjenik-tablica thead th {
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--hairline-28);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--accent);
+}
+.cjenik-tablica tbody th, .cjenik-tablica td { padding: 18px 0; border-bottom: 1px solid var(--hairline-16); vertical-align: top; text-align: left; font-weight: 400; }
+.cjenik-tablica thead th + th, .cjenik-tablica td { padding-left: 24px; }
+.cjenik-tablica thead th:nth-child(n+3), .cjenik-tablica .cjenik-cijena, .cjenik-tablica .cjenik-sidro { text-align: right; white-space: nowrap; }
+.cjenik-tablica td { font-size: 14px; color: var(--text-72); }
+.cjenik-naziv { display: block; font-size: 16px; }
+.cjenik-opis { display: block; margin-top: 6px; max-width: 60ch; font-size: 13px; line-height: 1.6; color: var(--text-60); }
+.cjenik-tablica .cjenik-cijena { font-family: var(--font-serif); font-size: 18px; color: var(--text); }
+
+.cjenik-napomene {
+  margin-top: clamp(36px, 5vw, 56px);
+  padding-top: 20px;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.42);
+  max-width: 74ch;
+  display: grid;
+  gap: 10px;
+}
+.cjenik-napomene p { font-size: 13px; line-height: 1.7; color: var(--text-60); }
+.cjenik-csv { color: var(--accent); border-bottom: 1px solid rgba(var(--accent-rgb), 0.5); }
+.cjenik-csv:hover { border-bottom-color: var(--accent); }
+.cjenik-cta { margin-top: clamp(32px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
+
+/* Fixed column widths so the four group tables line up with each other. */
+@media (min-width: 640px) {
+  .cjenik-tablica { table-layout: fixed; }
+  .cjenik-tablica thead th:nth-child(2) { width: 120px; }
+  .cjenik-tablica thead th:nth-child(3) { width: 150px; }
+  .cjenik-tablica thead th:nth-child(4) { width: 190px; }
+}
+
+/* Narrow screens: each row becomes a stacked card, cell labels come from data-label. */
+@media (max-width: 639px) {
+  .cjenik-tablica thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .cjenik-tablica tr { display: grid; gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--hairline-16); }
+  .cjenik-tablica tbody tr:first-child { border-top: 1px solid var(--hairline-28); }
+  .cjenik-tablica tbody th, .cjenik-tablica td { padding: 0; border: 0; }
+  .cjenik-tablica tbody th { margin-bottom: 4px; }
+  .cjenik-tablica td { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .cjenik-tablica td::before { content: attr(data-label); font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-60); }
+}
 
 /* ==========================================================================
    Modal galerije

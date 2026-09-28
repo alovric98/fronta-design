@@ -1,0 +1,17 @@
+﻿Šifra;Naziv;Vrsta;Opis;Marka;Jedinica mjere;Vrsta cijene;Maloprodajna cijena (EUR);Posebni oblik prodaje;Cijena na 10.09.2026. (EUR);Barkod;Raspoloživost
+K-01;Kuhinja BASIC;proizvod;Namještaj po mjeri, standardni materijali, Blum okovi, standardna izvedba;Fronta Design;m¹;od;450,00;ne;450,00;;dostupno
+K-02;Kuhinja STANDARD;proizvod;Kvalitetniji materijali i dekori, Blum okovi, LED rasvjeta, zidna obloga, izvedba do stropa…;Fronta Design;m¹;od;650,00;ne;650,00;;dostupno
+K-03;Kuhinja PREMIUM;proizvod;"Premium materijali poput FENIX-a, visokog sjaja i sl.; Blum okovi, LED rasvjeta, zidna obloga, dna gornjih elemenata u dekoru, izvedba do stropa, završne blende…";Fronta Design;m¹;od;750,00;ne;750,00;;dostupno
+P-01;3D projektiranje kuhinje;usluga;Idejno 3D projektiranje prema zahtjevima kupca;;projekt;fiksna;50,00;ne;50,00;;
+P-02;3D projektiranje + tehnička razrada;usluga;3D projekt, raspored elemenata i tehnička priprema;;projekt;fiksna;100,00;ne;100,00;;
+P-03;Izmjera prostora;usluga;Izlazak, izmjera i osnovna tehnička priprema;;izlazak;fiksna;40,00;ne;40,00;;
+I-01;Izrada namještaja od iverala;proizvod;Izrada prema projektu i specifikaciji;Fronta Design;m²;fiksna;350,00;ne;350,00;;dostupno
+I-02;Izrada namještaja od MDF-a;proizvod;Izrada prema projektu i specifikaciji;Fronta Design;m²;fiksna;450,00;ne;450,00;;dostupno
+I-03;Ugradbeni ormar BASIC;proizvod;Standardni materijali i izvedba;Fronta Design;m²;fiksna;350,00;ne;350,00;;dostupno
+I-04;Ugradbeni ormar STANDARD;proizvod;Kvalitetniji materijali i okovi;Fronta Design;m²;fiksna;500,00;ne;500,00;;dostupno
+I-05;Ugradbeni ormar PREMIUM;proizvod;Premium materijali i okovi;Fronta Design;m²;fiksna;700,00;ne;700,00;;dostupno
+M-01;Montaža namještaja;usluga;Montaža izrađenog namještaja;;m²;fiksna;25,00;ne;25,00;;
+M-02;Minimalna naknada za montažu;usluga;Minimalni obračun izlaska i montaže;;izlazak;fiksna;60,00;ne;60,00;;
+M-03;Montaža kuhinje;usluga;Montaža prema projektu;;komplet;od;200,00;ne;200,00;;
+D-01;Dostava;usluga;Dostava namještaja;;dostava;od;30,00;ne;30,00;;
+D-02;Dodatna prilagodba na objektu;usluga;Rezanje, prilagodbe i dodatni radovi;;sat;fiksna;40,00;ne;40,00;;
