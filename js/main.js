@@ -6,6 +6,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initMobileMenu();
+    initCtaBar();
     initProjekti();
     initForm();
   });
@@ -26,6 +27,27 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+  }
+
+  // Mobile call/quote bar: shown once the hero has scrolled away, hidden again while the contact section is on screen.
+  function initCtaBar() {
+    var bar = document.getElementById('ctaBar');
+    var hero = document.querySelector('.hero');
+    var kontakt = document.getElementById('kontakt');
+    if (!bar || !hero || !kontakt) return;
+
+    var heroVisible = true;
+    var kontaktVisible = false;
+    // The top margin matches the sticky header: the hero's last pixels hide behind it.
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.target === hero) heroVisible = e.isIntersecting;
+        else kontaktVisible = e.isIntersecting;
+      });
+      bar.classList.toggle('is-visible', !heroVisible && !kontaktVisible);
+    }, { rootMargin: '-60px 0px 0px 0px' });
+    io.observe(hero);
+    io.observe(kontakt);
   }
 
   function initProjekti() {

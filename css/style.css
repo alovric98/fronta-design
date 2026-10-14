@@ -653,3 +653,47 @@ img { max-width: 100%; display: block; }
 .lightbox-prev { left: 10px; top: 50%; margin-top: -22px; }
 .lightbox-next { right: 10px; top: 50%; margin-top: -22px; }
 .lightbox-close { right: 10px; top: 10px; width: 36px; height: 36px; }
+
+/* ==========================================================================
+   Mobile call / quote bar (toggled by initCtaBar in js/main.js)
+   ========================================================================== */
+
+.cta-bar { display: none; }
+@media (max-width: 639px) {
+  .cta-bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 40; /* below the header (50) and the lightbox (200) */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px var(--pad-x) calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--surface-blur);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--hairline-12);
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 240ms ease, visibility 0s linear 240ms;
+  }
+  .cta-bar.is-visible { transform: none; visibility: visible; transition-delay: 0s; }
+  .cta-call {
+    min-height: 52px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: 1px solid var(--hairline-28);
+    color: var(--text);
+  }
+  .cta-call small { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+  .cta-call strong { font-size: 15px; font-weight: 500; letter-spacing: 0.04em; }
+  .cta-bar .btn-dark { padding: 8px 12px; text-align: center; }
+  /* Keeps the footer text clear of the bar (52px buttons + 2 x 12px padding). */
+  .site-footer { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-bar { transition: none; }
+}
