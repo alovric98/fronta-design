@@ -215,7 +215,7 @@ img { max-width: 100%; display: block; }
 
 /* ==========================================================================
    Hero: full-bleed photo from the sticky header to the bottom of the first screen.
-   Mobile: eyebrow at the top, headline + both buttons grouped at the bottom, left-aligned.
+   Mobile: eyebrow + headline form one centered block at the exact middle of the hero, both buttons at the bottom.
    Desktop (>=880px): eyebrow top, headline centered, buttons at the bottom edge.
    ========================================================================== */
 
@@ -231,9 +231,7 @@ img { max-width: 100%; display: block; }
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(12, 10, 8, 0.55) 0%, rgba(12, 10, 8, 0) 24%),
-    linear-gradient(to top, rgba(12, 10, 8, 0.92) 0%, rgba(12, 10, 8, 0.7) 32%, rgba(12, 10, 8, 0.28) 62%, rgba(12, 10, 8, 0.08) 100%);
+  background: linear-gradient(to bottom, rgba(12, 10, 8, 0.38) 0%, rgba(12, 10, 8, 0.58) 45%, rgba(12, 10, 8, 0.9) 100%);
 }
 .hero-media { position: absolute; inset: 0; display: block; background: var(--media-bg); }
 .hero-media img {
@@ -251,14 +249,16 @@ img { max-width: 100%; display: block; }
   max-width: var(--max-width);
   height: 100%;
   margin: 0 auto;
-  padding: 0 var(--pad-x) calc(28px + env(safe-area-inset-bottom, 0px));
-  display: flex;
-  flex-direction: column;
+  padding-inline: var(--pad-x);
+  display: grid;
+  grid-template-rows: 1fr auto auto 1fr; /* eyebrow + title form one block centered exactly mid-hero; the last 1fr row holds the buttons */
 }
-.hero-eyebrow { position: relative; z-index: 1; margin: clamp(20px, 5vw, 32px) 0 0; color: var(--accent-on-photo); }
-.hero-copy { position: relative; z-index: 1; margin-top: auto; }
+.hero-eyebrow { position: relative; z-index: 1; grid-row: 2; margin: 0 0 clamp(14px, 2vw, 22px); text-align: center; color: var(--accent-on-photo); }
+.hero-copy { position: relative; z-index: 1; grid-row: 3; text-align: center; }
 .hero-title {
   max-width: 12em;
+  margin-inline: auto;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
   font-family: var(--font-serif);
   font-weight: 300;
   font-size: clamp(36px, 14px + 3.4vw, 64px);
@@ -267,7 +267,7 @@ img { max-width: 100%; display: block; }
   color: var(--text);
   text-wrap: balance;
 }
-.hero-cta { position: relative; z-index: 1; margin-top: clamp(18px, 3vw, 32px); display: grid; gap: 4px; }
+.hero-cta { position: relative; z-index: 1; grid-row: 4; align-self: end; display: grid; gap: 4px; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
 .hero-cta .btn-dark { padding: 14px 28px; font-weight: 500; }
 .hero-link {
   display: inline-block;
@@ -282,17 +282,17 @@ img { max-width: 100%; display: block; }
 .hero-link:hover { border-bottom-color: var(--accent); }
 
 @media (min-width: 640px) {
-  .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+  .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 28px; }
   .hero-link { justify-self: auto; }
 }
 @media (min-width: 880px) {
   .hero { height: max(520px, min(calc(100dvh - var(--hdr) - 1px), 920px)); }
   .hero::after { background: linear-gradient(to bottom, rgba(12, 10, 8, 0.62) 0%, rgba(12, 10, 8, 0.56) 45%, rgba(12, 10, 8, 0.9) 100%); }
   .hero-grid { display: grid; grid-template-rows: auto 1fr auto; padding-bottom: 56px; }
-  .hero-eyebrow { text-align: center; }
-  .hero-copy { margin-top: 0; align-self: center; text-align: center; }
+  .hero-eyebrow { grid-row: 1; margin: clamp(20px, 5vw, 32px) 0 0; text-align: center; }
+  .hero-copy { grid-row: 2; margin-top: 0; align-self: center; text-align: center; }
   .hero-title { max-width: 13em; margin-inline: auto; font-size: clamp(36px, 14px + 4.2vw, 84px); text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35); }
-  .hero-cta { margin-top: 0; justify-content: center; }
+  .hero-cta { grid-row: 3; margin-top: 0; padding-bottom: 0; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-media img { animation: none; }
