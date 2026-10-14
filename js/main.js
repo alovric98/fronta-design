@@ -41,9 +41,12 @@
     var mobile = window.matchMedia('(max-width: 639px)');
     var moreStep = 0;
 
-    // Start with 4 (mobile) or 6 (desktop) photos; every "Show more" click reveals 12 more.
+    // Start with 4 (mobile) or 6 (desktop) photos; the first "Show more" click reveals 12 more, the second everything.
     function visibleCount() {
-      return (mobile.matches ? 4 : 6) + moreStep * 12;
+      var start = mobile.matches ? 4 : 6;
+      if (moreStep === 0) return start;
+      if (moreStep === 1) return start + 12;
+      return total;
     }
 
     function render() {
