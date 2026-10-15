@@ -64,10 +64,10 @@
     var moreStep = 0;
 
     // Start with 4 (mobile) or 6 (desktop) photos; the first "Show more" click reveals 12 more, the second everything.
+    function startCount() { return mobile.matches ? 4 : 6; }
     function visibleCount() {
-      var start = mobile.matches ? 4 : 6;
-      if (moreStep === 0) return start;
-      if (moreStep === 1) return start + 12;
+      if (moreStep === 0) return startCount();
+      if (moreStep === 1) return startCount() + 12;
       return total;
     }
 
@@ -75,15 +75,24 @@
       var visible = Math.min(visibleCount(), total);
       tiles.forEach(function (tile, i) { tile.hidden = i >= visible; });
       counter.textContent = 'Prikazano ' + visible + ' od ' + total;
-      more.hidden = visible >= total;
+      more.hidden = total <= startCount();
+      // Once everything is shown the same button collapses the gallery back to the start.
+      moreBtn.textContent = visible >= total ? 'Skrati prikaz' : 'Prikaži više';
     }
 
     moreBtn.addEventListener('click', function () {
-      var firstNew = Math.min(visibleCount(), total);
+      if (Math.min(visibleCount(), total) >= total) {
+        moreStep = 0;
+        render();
+        // Collapsing leaves the viewport at the bottom of the old gallery; bring the top back (smooth via CSS).
+        document.getElementById('projekti').scrollIntoView();
+        return;
+      }
+      // Only tiles revealed by a click get the fade-in; the ones already on screen must not flicker.
+      var from = Math.min(visibleCount(), total);
       moreStep++;
+      tiles.slice(from, Math.min(visibleCount(), total)).forEach(function (tile) { tile.classList.add('is-new'); });
       render();
-      // The button disappears once everything is shown; keep keyboard focus in the grid.
-      if (more.hidden) tiles[firstNew].querySelector('.projekt-photo').focus();
     });
     mobile.addEventListener('change', render);
     render();
