@@ -11,15 +11,24 @@
 
 Ova mapa nije povezana sa stranicom (ništa je ne učitava).
 
-## Ponovno renderiranje
+## Kako je složeno
+
+Animacija je HTML + CSS + GSAP, a u MP4 je renderira [HyperFrames](https://hyperframes.heygen.com):
+
+- `hyperframes/index.html` – cijeli motion design: raspored, tekstovi, tajming (GSAP timeline na dnu datoteke). Za promjenu teksta, boja ili tempa mijenja se samo ova datoteka.
+- `hyperframes/assets/layers/` – slojevi izrezani iz fotografije (crtež, svaki element posebno, prostor, svjetlo ugašeno/upaljeno).
+- `hyperframes/assets/fonts/` – Newsreader i Inter (fontovi sa stranice, OFL licenca); `assets/vendor/gsap.min.js` – GSAP 3.14.2.
+- `layers.py` + `elements.py` – izrezuju slojeve iz `kuhinja-izvor.jpg`. `elements.py` drži poligone elemenata u pikselima fotografije. Ponovo pokrenuti samo kad se mijenja fotografija ili maske.
+
+## Naredbe
 
 ```
-pip install numpy pillow opencv-python-headless
-python3 render.py                    # -> kuhinja-hook-9x16.mp4
-python3 render.py --preview 2.5 9    # PNG kadrovi za zadane sekunde
+cd hyperframes
+npm run dev       # preview u pregledniku (HyperFrames Studio)
+npm run check     # lint + provjera layouta i kontrasta
+npm run render    # -> ../kuhinja-hook-9x16.mp4
+npm run layers    # ponovno izrezivanje slojeva (treba: pip install numpy pillow opencv-python-headless)
 ```
 
-- `kuhinja-izvor.jpg` – izvorna fotografija
-- `elements.py` – maske elemenata (poligoni u pikselima fotografije) i redoslijed/smjer ugradnje
-- `render.py` – animacija, tekstovi i tajming (`T_DRAW`, `T_WIPE`, `T_LIGHT`, `BUILD_TIMES`, `FINAL_TIMES`)
-- `fonts/` – Newsreader (font sa stranice, OFL licenca); Inter se uzima iz sustava
+Za render treba Node 22+, FFmpeg i Chrome Headless Shell (`npx hyperframes browser ensure`,
+ili postojeći preglednik preko varijable `HYPERFRAMES_BROWSER_PATH`).

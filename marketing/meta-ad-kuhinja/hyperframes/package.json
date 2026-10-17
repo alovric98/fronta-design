@@ -1,0 +1,11 @@
+{
+  "name": "fronta-kuhinja-hook",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "layers": "cd .. && python3 layers.py",
+    "dev": "npx --yes hyperframes@0.8.169 preview",
+    "check": "npx --yes hyperframes@0.8.169 check",
+    "render": "npx --yes hyperframes@0.8.169 render -q high -o ../kuhinja-hook-9x16.mp4"
+  }
+}

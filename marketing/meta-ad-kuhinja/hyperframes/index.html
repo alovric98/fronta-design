@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="hr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Fronta Design – kuhinja od nule</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Newsreader";
+        src: url("assets/fonts/Newsreader-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Newsreader";
+        src: url("assets/fonts/Newsreader-Italic.ttf") format("truetype");
+        font-weight: 400;
+        font-style: italic;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("assets/fonts/Inter-Medium.otf") format("opentype");
+        font-weight: 500;
+        font-style: normal;
+        font-display: block;
+      }
+
+      /* Brand palette from css/style.css */
+      :root {
+        --deep: #1b1b1d;
+        --text: #edebe8;
+        --accent: #c58656;
+        --logo: #c9975c;
+        /* Kitchen corner on the stage: the drawing and the room grow from here. */
+        --cx: 558px;
+        --cy: 469px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--deep);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        background: var(--deep);
+        color: var(--text);
+      }
+      #scene {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* ---- brand row */
+      .brand {
+        position: absolute;
+        left: 72px;
+        top: 297px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .brand svg {
+        height: 50px;
+        width: auto;
+      }
+      .brand span {
+        font: 500 24px/1 "Inter", sans-serif;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--logo);
+      }
+
+      /* ---- headline: three lines, build copy and closing copy share the slots */
+      .line {
+        position: absolute;
+        left: 72px;
+        font: 400 76px/1 "Newsreader", serif;
+        white-space: nowrap;
+        color: var(--text);
+      }
+      .line.accent {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .l1 { top: 418px; }
+      .l2 { top: 505px; }
+      .l3 { top: 592px; }
+
+      .url {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 1662px;
+        text-align: center;
+        font: 500 26px/1 "Inter", sans-serif;
+        color: rgba(237, 235, 232, 0.47);
+      }
+
+      /* ---- stage: the photo, cut into layers by ../layers.py */
+      #stage {
+        position: absolute;
+        left: 0;
+        top: 730px;
+        width: 1080px;
+        height: 878px;
+        overflow: hidden;
+        background: var(--deep);
+      }
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 52% 55%;
+        --r: 230;
+        --w: 0;
+      }
+      #cam img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      /* line drawing spreading out from the corner */
+      #hint {
+        opacity: 0.085;
+      }
+      #hint,
+      #lines {
+        -webkit-mask-image: radial-gradient(circle at var(--cx) var(--cy), #000 calc(var(--r) * 1px - 50px), transparent calc(var(--r) * 1px));
+        mask-image: radial-gradient(circle at var(--cx) var(--cy), #000 calc(var(--r) * 1px - 50px), transparent calc(var(--r) * 1px));
+      }
+      /* copper "pen" ring on the drawing front */
+      #pen {
+        -webkit-mask-image: radial-gradient(circle at var(--cx) var(--cy), transparent calc(var(--r) * 1px - 72px), #000 calc(var(--r) * 1px - 30px), transparent calc(var(--r) * 1px + 2px));
+        mask-image: radial-gradient(circle at var(--cx) var(--cy), transparent calc(var(--r) * 1px - 72px), #000 calc(var(--r) * 1px - 30px), transparent calc(var(--r) * 1px + 2px));
+      }
+      /* walls, floor and details filling in */
+      #room {
+        -webkit-mask-image: radial-gradient(circle at var(--cx) var(--cy), #000 calc(var(--w) * 1px - 190px), transparent calc(var(--w) * 1px));
+        mask-image: radial-gradient(circle at var(--cx) var(--cy), #000 calc(var(--w) * 1px - 190px), transparent calc(var(--w) * 1px));
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="13"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="scene">
+        <div id="stage">
+          <div id="cam" data-layout-allow-overflow>
+            <img id="hint" src="assets/layers/off.jpg" alt="" />
+            <img id="lines" src="assets/layers/lines.png" alt="" />
+            <img id="pen" src="assets/layers/lines-accent.png" alt="" />
+            <img id="room" src="assets/layers/room.png" alt="" />
+            <!-- installed in this order (see INSTALL below) -->
+            <img id="base" class="unit" src="assets/layers/base.png" alt="" />
+            <img id="tall" class="unit" src="assets/layers/tall.png" alt="" />
+            <img id="counter" class="unit" src="assets/layers/counter.png" alt="" />
+            <img id="upper" class="unit" src="assets/layers/upper.png" alt="" />
+            <img id="peninsula" class="unit" src="assets/layers/peninsula.png" alt="" />
+            <img id="shelves" class="unit" src="assets/layers/shelves.png" alt="" />
+            <img id="stool_back" class="unit" src="assets/layers/stool_back.png" alt="" />
+            <img id="stool_left" class="unit" src="assets/layers/stool_left.png" alt="" />
+            <img id="stool_right" class="unit" src="assets/layers/stool_right.png" alt="" />
+            <img id="lit" src="assets/layers/on.jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="brand">
+          <svg viewBox="65 32 129 94" aria-hidden="true">
+            <g transform="translate(0,150) scale(0.1,-0.1)" fill="#C9975C" stroke="none">
+              <path d="M1345 1160 c-118 -16 -198 -33 -325 -67 -74 -20 -151 -39 -170 -44
+-60 -13 -173 -58 -182 -71 -12 -20 -10 -64 6 -100 33 -77 76 -196 82 -228 4
+-19 17 -54 30 -76 13 -23 28 -59 33 -80 9 -38 33 -103 65 -177 22 -50 42 -46
+84 17 51 77 51 78 -22 289 -45 129 -67 210 -69 247 l-2 55 65 32 c36 17 90 37
+120 43 30 7 77 21 103 31 26 11 64 19 85 19 40 1 163 49 193 76 10 9 15 22 12
+30 -5 15 -27 16 -108 4z"/>
+              <path d="M1375 934 c-113 -16 -321 -69 -352 -89 -13 -9 -23 -22 -23 -30 0 -18
+57 -122 71 -131 6 -3 30 12 54 33 94 82 126 101 198 114 164 31 177 33 253 31
+56 -2 66 -6 112 -43 66 -54 87 -102 87 -200 0 -69 -3 -80 -25 -105 -30 -32
+-128 -79 -187 -89 -55 -9 -81 -36 -57 -59 19 -20 56 -15 164 21 142 48 212 93
+241 157 56 124 -27 309 -170 375 -63 29 -75 31 -172 30 -57 -1 -144 -7 -194
+-15z"/>
+              <path d="M1475 683 c-143 -32 -222 -56 -267 -79 -60 -33 -69 -55 -44 -113 8
+-20 31 -79 52 -131 42 -108 47 -114 85 -94 16 8 34 14 42 14 38 0 39 27 6 128
+-44 135 -46 131 111 174 77 21 85 25 88 49 3 27 -20 60 -41 58 -7 -1 -21 -3
+-32 -6z"/>
+            </g>
+          </svg>
+          <span>Fronta Design</span>
+        </div>
+
+        <div id="b1" class="line l1 build">Od skice</div>
+        <div id="b2" class="line l2 build">do montaže</div>
+        <div id="b3" class="line l3 build accent">do zadnjeg detalja.</div>
+
+        <div id="f1" class="line l1 final">Želiš iskoristiti svaki kutak</div>
+        <div id="f2" class="line l2 final">svog doma na najbolji način?</div>
+        <div id="f3" class="line l3 final accent">Onda si na pravom mjestu.</div>
+
+        <div class="url">frontadesign.hr</div>
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // 0 – 1.3 s: the space is drawn, spreading out from the kitchen corner
+      tl.fromTo("#cam", { "--r": 230 }, { "--r": 820, duration: 1.3, ease: "power2.out" }, 0);
+      tl.fromTo("#pen", { opacity: 0.8 }, { opacity: 0, duration: 0.35, ease: "none" }, 1.0);
+
+      // slow pull-back that settles exactly when the closing text starts
+      tl.fromTo("#cam", { scale: 1.06 }, { scale: 1, duration: 8, ease: "power3.out" }, 0);
+
+      // 1.3 – 5.1 s: units slide into place  [id, start, duration, x, y]
+      const INSTALL = [
+        ["#base", 1.3, 0.75, 0, 90],
+        ["#tall", 1.7, 0.75, 140, 0],
+        ["#counter", 2.15, 0.7, 0, -70],
+        ["#upper", 2.6, 0.8, 0, -120],
+        ["#peninsula", 3.15, 0.8, -170, 0],
+        ["#shelves", 3.7, 0.65, -80, 0],
+        ["#stool_back", 4.05, 0.65, 0, -60],
+        ["#stool_left", 4.2, 0.7, 0, -80],
+        ["#stool_right", 4.38, 0.7, 0, -80],
+      ];
+      for (const [id, at, dur, x, y] of INSTALL) {
+        tl.fromTo(id, { x, y }, { x: 0, y: 0, duration: dur, ease: "back.out(1.25)" }, at);
+        tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: dur * 0.3, ease: "none" }, at);
+      }
+
+      // 5.15 – 6.35 s: walls, floor and the details fill in
+      tl.fromTo("#cam", { "--w": 0 }, { "--w": 930, duration: 1.2, ease: "power1.inOut" }, 5.15);
+
+      // 6.55 – 7.2 s: the LED light switches on with a short flicker
+      tl.set("#lit", { opacity: 0 }, 0);
+      tl.set("#lit", { opacity: 0.55 }, 6.55);
+      tl.set("#lit", { opacity: 0.12 }, 6.62);
+      tl.to("#lit", { opacity: 1, duration: 0.51, ease: "power2.inOut" }, 6.69);
+
+      // headline: "Od skice / do montaže / do zadnjeg detalja."
+      tl.fromTo("#b2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.35);
+      tl.fromTo("#b3", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.25);
+      tl.to(".build", { opacity: 0, y: -18, duration: 0.35, ease: "power2.in" }, 7.7);
+
+      // 8 – 13 s: the kitchen holds still under the closing question
+      tl.fromTo("#f1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.0);
+      tl.fromTo("#f2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.15);
+      tl.fromTo("#f3", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.45);
+
+      // keep the timeline exactly 13 s long
+      tl.set({}, {}, 13);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
